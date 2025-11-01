@@ -97,6 +97,9 @@ vim.g.have_nerd_font = false
 -- See `:help vim.o`
 -- NOTE: You can change these options as you wish!
 --  For more options, you can see `:help option-list`
+--
+-- Fix for vimwiki error
+vim.o.modeline = false
 
 -- Make line numbers default
 vim.o.number = true
@@ -248,6 +251,14 @@ rtp:prepend(lazypath)
 require('lazy').setup({
   -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
   'NMAC427/guess-indent.nvim', -- Detect tabstop and shiftwidth automatically
+  'vimwiki/vimwiki',
+  {
+    'norcalli/nvim-colorizer.lua',
+    opts = {},
+    config = function()
+      require('colorizer').setup()
+    end,
+  },
 
   -- NOTE: Plugins can also be added by using a table,
   -- with the first argument being the link and the following
